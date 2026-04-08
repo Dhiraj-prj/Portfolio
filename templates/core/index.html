@@ -73,8 +73,8 @@
     </div>
     <div class="hero-right">
       <div class="photo-frame">
-        {% if profile.photo %}
-        <img src="{{ profile.photo.url }}" alt="{{ profile.name }}" class="profile-photo">
+        {% if profile.get_photo_url %}
+        <img src="{{ profile.get_photo_url }}" alt="{{ profile.name }}" class="profile-photo">
         {% else %}
         <div class="photo-placeholder">
           <span class="placeholder-initials">DP</span>
@@ -321,7 +321,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner-wrap">
-    <div class="logo">DjP.</div>
+    <div class="logo">DP.</div>
     <p class="footer-copy">Designed &amp; built by {{ profile.name }} · 2025</p>
     <a href="/admin/" class="admin-link">Admin Panel ↗</a>
   </div>

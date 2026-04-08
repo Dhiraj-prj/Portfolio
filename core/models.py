@@ -4,14 +4,16 @@ from django.db import models
 class Profile(models.Model):
     name = models.CharField(max_length=100, default="Dhiraj Parajuli")
     tagline = models.CharField(max_length=200, default="BCA Student & Freelance Developer")
-    bio = models.TextField(default="Motivated and enthusiastic BCA student with strong technical and problem-solving skills, building web platforms, mental health tools, and civic tech.")
+    bio = models.TextField(default="Motivated BCA student with strong technical and problem-solving skills.")
     location = models.CharField(max_length=100, default="Itahari, Nepal")
     email = models.EmailField(default="Parajulidhiraj00@gmail.com")
     phone = models.CharField(max_length=20, default="9815373314")
     github = models.URLField(blank=True, null=True)
     linkedin = models.URLField(blank=True, null=True)
     photo = models.ImageField(upload_to='profile/', blank=True, null=True)
+    photo_url = models.URLField(blank=True, null=True, help_text="Paste a direct image URL here (e.g. from Imgur or Google Drive) — use this instead of uploading if images aren't working")
     resume = models.FileField(upload_to='resume/', blank=True, null=True)
+    resume_url = models.URLField(blank=True, null=True, help_text="Paste a direct link to your resume PDF (e.g. Google Drive share link)")
     is_available = models.BooleanField(default=True)
 
     class Meta:
@@ -19,6 +21,14 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_photo_url(self):
+        """Returns photo_url if set, otherwise falls back to uploaded photo"""
+        if self.photo_url:
+            return self.photo_url
+        if self.photo:
+            return self.photo.url
+        return None
 
 
 class SkillCategory(models.Model):
@@ -53,6 +63,7 @@ class Project(models.Model):
     github_url = models.URLField(blank=True, null=True)
     live_url = models.URLField(blank=True, null=True)
     image = models.ImageField(upload_to='projects/', blank=True, null=True)
+    image_url = models.URLField(blank=True, null=True, help_text="Paste a direct image URL instead of uploading")
     featured = models.BooleanField(default=False)
     order = models.PositiveIntegerField(default=0)
 
@@ -64,6 +75,13 @@ class Project(models.Model):
 
     def get_stack_list(self):
         return [t.strip() for t in self.tech_stack.split(',')]
+
+    def get_image_url(self):
+        if self.image_url:
+            return self.image_url
+        if self.image:
+            return self.image.url
+        return None
 
 
 class Experience(models.Model):
