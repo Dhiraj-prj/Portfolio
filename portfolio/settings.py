@@ -7,9 +7,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-change-this-in-production-xyz123abc')
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['portfolio-production-2478.up.railway.app', '127.0.0.1', 'localhost']
 
-CSRF_TRUSTED_ORIGINS = []
+CSRF_TRUSTED_ORIGINS = [
+    'https://portfolio-production-2478.up.railway.app',
+]
 _origins = os.environ.get('CSRF_TRUSTED_ORIGINS', '')
 if _origins:
     CSRF_TRUSTED_ORIGINS = [o.strip() for o in _origins.split(',')]
