@@ -5,12 +5,18 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-change-this-in-production-xyz123abc')
-DEBUG = os.environ.get('DEBUG', 'False') == 'False'
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['portfolio-production-2478.up.railway.app', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['portfolio-production-2478.up.railway.app', 
+                 '127.0.0.1', 
+                 'localhost',
+                 'dhirajparajuli.com.np',
+                 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://portfolio-production-2478.up.railway.app',
+    'https://dhirajparajuli.com.np',
+
 ]
 _origins = os.environ.get('CSRF_TRUSTED_ORIGINS', '')
 if _origins:
