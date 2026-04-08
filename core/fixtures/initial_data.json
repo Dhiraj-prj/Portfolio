@@ -1,0 +1,364 @@
+[
+{
+  "model": "core.profile",
+  "pk": 1,
+  "fields": {
+    "name": "Dhiraj Parajuli",
+    "tagline": "BCA Student & Freelance Developer",
+    "bio": "Motivated BCA student with strong technical and problem-solving skills, building web platforms, mental health tools, and civic tech. Passionate about Python, Django, and modern web experiences.",
+    "location": "Itahari, Nepal",
+    "email": "Parajulidhiraj00@gmail.com",
+    "phone": "9815373314",
+    "github": null,
+    "linkedin": null,
+    "photo": "",
+    "resume": "",
+    "is_available": true
+  }
+},
+{
+  "model": "core.skillcategory",
+  "pk": 1,
+  "fields": {
+    "name": "Web Development",
+    "icon": "🌐",
+    "order": 1
+  }
+},
+{
+  "model": "core.skillcategory",
+  "pk": 2,
+  "fields": {
+    "name": "Database",
+    "icon": "🗄️",
+    "order": 2
+  }
+},
+{
+  "model": "core.skillcategory",
+  "pk": 3,
+  "fields": {
+    "name": "Tools & Platforms",
+    "icon": "🔧",
+    "order": 3
+  }
+},
+{
+  "model": "core.skillcategory",
+  "pk": 4,
+  "fields": {
+    "name": "Design",
+    "icon": "🎨",
+    "order": 4
+  }
+},
+{
+  "model": "core.skillcategory",
+  "pk": 5,
+  "fields": {
+    "name": "Networking & IT",
+    "icon": "📡",
+    "order": 5
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 1,
+  "fields": {
+    "category": 1,
+    "name": "HTML",
+    "order": 0
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 2,
+  "fields": {
+    "category": 1,
+    "name": "CSS",
+    "order": 0
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 3,
+  "fields": {
+    "category": 1,
+    "name": "Python",
+    "order": 0
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 4,
+  "fields": {
+    "category": 1,
+    "name": "Django",
+    "order": 0
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 5,
+  "fields": {
+    "category": 2,
+    "name": "MySQL",
+    "order": 0
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 6,
+  "fields": {
+    "category": 2,
+    "name": "SQLite",
+    "order": 0
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 7,
+  "fields": {
+    "category": 3,
+    "name": "VS Code",
+    "order": 0
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 8,
+  "fields": {
+    "category": 3,
+    "name": "GitHub",
+    "order": 0
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 9,
+  "fields": {
+    "category": 3,
+    "name": "MS Office",
+    "order": 0
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 10,
+  "fields": {
+    "category": 3,
+    "name": "Google Workspace",
+    "order": 0
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 11,
+  "fields": {
+    "category": 4,
+    "name": "Canva",
+    "order": 0
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 12,
+  "fields": {
+    "category": 4,
+    "name": "Photoshop basics",
+    "order": 0
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 13,
+  "fields": {
+    "category": 5,
+    "name": "LAN Setup",
+    "order": 0
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 14,
+  "fields": {
+    "category": 5,
+    "name": "Troubleshooting",
+    "order": 0
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 15,
+  "fields": {
+    "category": 5,
+    "name": "System Maintenance",
+    "order": 0
+  }
+},
+{
+  "model": "core.project",
+  "pk": 1,
+  "fields": {
+    "title": "ServeSync",
+    "description": "A maid and house owner connection platform featuring real-time chat functionality and comprehensive user management system.",
+    "tech_stack": "Django, Python, SQLite",
+    "github_url": null,
+    "live_url": null,
+    "image": "",
+    "featured": false,
+    "order": 1
+  }
+},
+{
+  "model": "core.project",
+  "pk": 2,
+  "fields": {
+    "title": "MaanoSewa",
+    "description": "A mental health awareness web app developed for the Hackathon: Advancing Health in Nepal. Focused on accessibility and user wellbeing.",
+    "tech_stack": "Django, HTML, CSS",
+    "github_url": null,
+    "live_url": null,
+    "image": "",
+    "featured": false,
+    "order": 2
+  }
+},
+{
+  "model": "core.project",
+  "pk": 3,
+  "fields": {
+    "title": "Movie Ticket Booking",
+    "description": "A web-based booking system with secure user authentication, seat selection, and full booking management features.",
+    "tech_stack": "Python, Django, MySQL",
+    "github_url": null,
+    "live_url": null,
+    "image": "",
+    "featured": false,
+    "order": 3
+  }
+},
+{
+  "model": "core.project",
+  "pk": 4,
+  "fields": {
+    "title": "Bdhayalaya",
+    "description": "An education platform providing detailed college information, study materials, and resources to help students choose suitable courses and institutions.",
+    "tech_stack": "Django, Python, SQLite",
+    "github_url": null,
+    "live_url": null,
+    "image": "",
+    "featured": false,
+    "order": 4
+  }
+},
+{
+  "model": "core.experience",
+  "pk": 1,
+  "fields": {
+    "title": "Freelance Frontend Developer & Designer",
+    "organization": "Self-employed",
+    "start_date": "2023",
+    "end_date": "Present",
+    "description": "Designed and developed responsive websites using modern frontend tools\nCreated social media and banner creatives for various clients\nDelivered end-to-end projects from design to deployment",
+    "order": 1
+  }
+},
+{
+  "model": "core.experience",
+  "pk": 2,
+  "fields": {
+    "title": "Regional Head — Techutsav 2.0",
+    "organization": "VACTECH IT Club, Vishwa Adarsha College",
+    "start_date": "2023",
+    "end_date": "2023",
+    "description": "Co-organized a regional tech event collaborating with multiple companies and institutions\nLed outreach and coordination across multiple stakeholders\nManaged logistics and sponsor communications",
+    "order": 2
+  }
+},
+{
+  "model": "core.experience",
+  "pk": 3,
+  "fields": {
+    "title": "BCA Student",
+    "organization": "Vishwa Adarsha College",
+    "start_date": "2022",
+    "end_date": "Present",
+    "description": "Pursuing Bachelor of Computer Applications\nBuilding projects in web development, networking, and software engineering\nActive member of the college IT club",
+    "order": 3
+  }
+},
+{
+  "model": "core.achievement",
+  "pk": 1,
+  "fields": {
+    "icon": "🏆",
+    "title": "Hackathon Participant",
+    "description": "Competed in 'Advancing Health in Nepal' as a developer with MaanoSewa, a mental health awareness platform.",
+    "order": 1
+  }
+},
+{
+  "model": "core.achievement",
+  "pk": 2,
+  "fields": {
+    "icon": "🚀",
+    "title": "Active Freelancer",
+    "description": "Delivered real-world websites and design work for clients as a self-employed developer since 2023.",
+    "order": 2
+  }
+},
+{
+  "model": "core.achievement",
+  "pk": 3,
+  "fields": {
+    "icon": "🌐",
+    "title": "Event Leadership",
+    "description": "Served as Regional Head for Techutsav 2.0, coordinating across companies and institutions at a tech summit.",
+    "order": 3
+  }
+},
+{
+  "model": "core.achievement",
+  "pk": 4,
+  "fields": {
+    "icon": "🎓",
+    "title": "Strong Academic Record",
+    "description": "Scored 3.09 GPA at Intermediate level and 3.70 GPA in SEE, demonstrating consistent academic performance.",
+    "order": 4
+  }
+},
+{
+  "model": "core.education",
+  "pk": 1,
+  "fields": {
+    "level": "Bachelors (BCA)",
+    "institution": "Vishwa Adarsha College",
+    "gpa": null,
+    "year": "2022 – Present",
+    "order": 1
+  }
+},
+{
+  "model": "core.education",
+  "pk": 2,
+  "fields": {
+    "level": "Intermediate (+2)",
+    "institution": "Vishwa Adarsha College",
+    "gpa": "3.09",
+    "year": "2022",
+    "order": 2
+  }
+},
+{
+  "model": "core.education",
+  "pk": 3,
+  "fields": {
+    "level": "SEE",
+    "institution": "Blooming Lotus Secondary School",
+    "gpa": "3.70",
+    "year": "2020",
+    "order": 3
+  }
+}
+]

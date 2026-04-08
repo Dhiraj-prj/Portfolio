@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% load static %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ profile.name }} — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursor-follower"></div>
+<div class="noise"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <div class="logo">DP.</div>
+    <ul class="nav-links">
+      <li><a href="#about">about</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#experience">experience</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+    {% if profile.is_available %}
+    <div class="nav-avail"><span class="avail-dot"></span> Available</div>
+    {% endif %}
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-tag">
+        <span class="tag-line"></span>
+        <span>Full Stack Developer · Designer · Nepal</span>
+      </div>
+      <h1 class="hero-name">
+        <span class="name-line">Dhiraj</span>
+        <span class="name-line accent">Parajuli</span>
+      </h1>
+      <p class="hero-bio">{{ profile.bio }}</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary">View Work <span class="btn-arrow">↗</span></a>
+        {% if profile.resume %}
+        <a href="{{ profile.resume.url }}" class="btn-ghost" download>Download CV</a>
+        {% else %}
+        <a href="#contact" class="btn-ghost">Get in Touch</a>
+        {% endif %}
+      </div>
+      <div class="hero-meta">
+        <div class="meta-item">
+          <span class="meta-num">{{ projects.count }}+</span>
+          <span class="meta-label">Projects</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-item">
+          <span class="meta-num">2+</span>
+          <span class="meta-label">Years Freelancing</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-item">
+          <span class="meta-num">1</span>
+          <span class="meta-label">Hackathon</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="photo-frame">
+        {% if profile.photo %}
+        <img src="{{ profile.photo.url }}" alt="{{ profile.name }}" class="profile-photo">
+        {% else %}
+        <div class="photo-placeholder">
+          <span class="placeholder-initials">DP</span>
+          <div class="placeholder-rings">
+            <div class="ring r1"></div>
+            <div class="ring r2"></div>
+            <div class="ring r3"></div>
+          </div>
+        </div>
+        {% endif %}
+        <div class="frame-deco deco-tl"></div>
+        <div class="frame-deco deco-br"></div>
+      </div>
+      <div class="floating-chip chip-1">🐍 Django</div>
+      <div class="floating-chip chip-2">⚡ Python</div>
+      <div class="floating-chip chip-3">🎨 Design</div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>scroll</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>Django</span><span class="sep">✦</span>
+    <span>Python</span><span class="sep">✦</span>
+    <span>HTML &amp; CSS</span><span class="sep">✦</span>
+    <span>MySQL</span><span class="sep">✦</span>
+    <span>GitHub</span><span class="sep">✦</span>
+    <span>Freelance</span><span class="sep">✦</span>
+    <span>UI Design</span><span class="sep">✦</span>
+    <span>Django REST</span><span class="sep">✦</span>
+    <span>Django</span><span class="sep">✦</span>
+    <span>Python</span><span class="sep">✦</span>
+    <span>HTML &amp; CSS</span><span class="sep">✦</span>
+    <span>MySQL</span><span class="sep">✦</span>
+    <span>GitHub</span><span class="sep">✦</span>
+    <span>Freelance</span><span class="sep">✦</span>
+    <span>UI Design</span><span class="sep">✦</span>
+    <span>Django REST</span><span class="sep">✦</span>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <div>
+        <p class="section-label">What I know</p>
+        <h2 class="section-title">Skills &amp; Tools</h2>
+      </div>
+    </div>
+    <div class="skills-grid">
+      {% for cat in skill_categories %}
+      <div class="skill-card reveal">
+        <div class="skill-card-top">
+          <span class="skill-icon">{{ cat.icon }}</span>
+          <h3 class="skill-cat-name">{{ cat.name }}</h3>
+        </div>
+        <div class="skill-tags">
+          {% for skill in cat.skills.all %}
+          <span class="skill-tag">{{ skill.name }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section section-dark" id="projects">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <div>
+        <p class="section-label">What I've built</p>
+        <h2 class="section-title">Projects</h2>
+      </div>
+    </div>
+    <div class="projects-list">
+      {% for project in projects %}
+      <div class="project-item reveal">
+        <div class="project-left">
+          <div class="project-num">0{{ forloop.counter }}</div>
+          <div class="project-info">
+            <h3 class="project-name">{{ project.title }}</h3>
+            <p class="project-desc">{{ project.description }}</p>
+            <div class="project-stack">
+              {% for tech in project.get_stack_list %}
+              <span class="stack-tag">{{ tech }}</span>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="project-links">
+          {% if project.github_url %}
+          <a href="{{ project.github_url }}" class="proj-link" target="_blank">GitHub ↗</a>
+          {% endif %}
+          {% if project.live_url %}
+          <a href="{{ project.live_url }}" class="proj-link proj-link-primary" target="_blank">Live ↗</a>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <div>
+        <p class="section-label">My journey</p>
+        <h2 class="section-title">Experience</h2>
+      </div>
+    </div>
+    <div class="exp-timeline">
+      {% for exp in experiences %}
+      <div class="exp-item reveal">
+        <div class="exp-dot"></div>
+        <div class="exp-content">
+          <div class="exp-header">
+            <div>
+              <h3 class="exp-title">{{ exp.title }}</h3>
+              <p class="exp-org">{{ exp.organization }}</p>
+            </div>
+            <span class="exp-date">{{ exp.start_date }} — {{ exp.end_date }}</span>
+          </div>
+          <ul class="exp-bullets">
+            {% for bullet in exp.get_bullets %}
+            <li>{{ bullet }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section section-dark" id="education">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <div>
+        <p class="section-label">Academic background</p>
+        <h2 class="section-title">Education</h2>
+      </div>
+    </div>
+    <div class="edu-grid">
+      {% for edu in education %}
+      <div class="edu-card reveal">
+        <div class="edu-year">{{ edu.year }}</div>
+        <h3 class="edu-level">{{ edu.level }}</h3>
+        <p class="edu-inst">{{ edu.institution }}</p>
+        {% if edu.gpa %}<span class="edu-gpa">GPA {{ edu.gpa }}</span>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="section" id="achievements">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <div>
+        <p class="section-label">Highlights</p>
+        <h2 class="section-title">Achievements</h2>
+      </div>
+    </div>
+    <div class="ach-grid">
+      {% for ach in achievements %}
+      <div class="ach-card reveal">
+        <span class="ach-icon">{{ ach.icon }}</span>
+        <h3 class="ach-title">{{ ach.title }}</h3>
+        <p class="ach-desc">{{ ach.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact-section" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-big-text">Let's<br><span class="accent">Work</span><br>Together.</div>
+      <div class="contact-right">
+        <p class="contact-sub">I'm open to internships, freelance work, and exciting projects. Whether you have an idea or just want to say hi — reach out.</p>
+        <div class="contact-links">
+          <a href="mailto:{{ profile.email }}" class="contact-link">
+            <span class="cl-icon">✉</span>
+            <div>
+              <span class="cl-label">Email</span>
+              <span class="cl-val">{{ profile.email }}</span>
+            </div>
+            <span class="cl-arrow">→</span>
+          </a>
+          <a href="tel:{{ profile.phone }}" class="contact-link">
+            <span class="cl-icon">📞</span>
+            <div>
+              <span class="cl-label">Phone</span>
+              <span class="cl-val">+977-{{ profile.phone }}</span>
+            </div>
+            <span class="cl-arrow">→</span>
+          </a>
+          {% if profile.github %}
+          <a href="{{ profile.github }}" class="contact-link" target="_blank">
+            <span class="cl-icon">⌥</span>
+            <div>
+              <span class="cl-label">GitHub</span>
+              <span class="cl-val">View Profile</span>
+            </div>
+            <span class="cl-arrow">→</span>
+          </a>
+          {% endif %}
+          {% if profile.linkedin %}
+          <a href="{{ profile.linkedin }}" class="contact-link" target="_blank">
+            <span class="cl-icon">in</span>
+            <div>
+              <span class="cl-label">LinkedIn</span>
+              <span class="cl-val">View Profile</span>
+            </div>
+            <span class="cl-arrow">→</span>
+          </a>
+          {% endif %}
+        </div>
+        <p class="contact-location">📍 {{ profile.location }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner-wrap">
+    <div class="logo">DP.</div>
+    <p class="footer-copy">Designed &amp; built by {{ profile.name }} · 2025</p>
+    <a href="/admin/" class="admin-link">Admin Panel ↗</a>
+  </div>
+</footer>
+
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
