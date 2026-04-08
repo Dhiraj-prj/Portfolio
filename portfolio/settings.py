@@ -5,24 +5,19 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-change-this-in-production-xyz123abc')
-DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['portfolio-production-2478.up.railway.app', 
-                 '127.0.0.1', 
-                 'localhost',
-                 'dhirajparajuli.com.np',
-                 'www.dhirajparajuli.com.np',
-                 ]
+ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://portfolio-production-2478.up.railway.app',
     'https://dhirajparajuli.com.np',
     'https://www.dhirajparajuli.com.np',
-
+    'https://*.up.railway.app',
 ]
-_origins = os.environ.get('CSRF_TRUSTED_ORIGINS', '')
-if _origins:
-    CSRF_TRUSTED_ORIGINS = [o.strip() for o in _origins.split(',')]
+# Also allow any extra origins from env variable
+_extra_origins = os.environ.get('CSRF_TRUSTED_ORIGINS', '')
+if _extra_origins:
+    CSRF_TRUSTED_ORIGINS += [o.strip() for o in _extra_origins.split(',')]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -98,5 +93,3 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
