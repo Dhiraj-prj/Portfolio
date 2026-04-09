@@ -9,10 +9,11 @@ admin.site.index_title = "Manage Your Portfolio"
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     fieldsets = (
-        ('Personal Info', {'fields': ('name', 'tagline', 'bio', 'photo', 'is_available')}),
+        ('Personal Info', {'fields': ('name', 'tagline', 'bio', 'is_available')}),
+        ('Photo', {'fields': ('photo', 'photo_url'), 'description': 'Either upload a photo OR paste a direct image URL below. URL is recommended for Railway hosting.'}),
         ('Contact', {'fields': ('email', 'phone', 'location')}),
         ('Social Links', {'fields': ('github', 'linkedin')}),
-        ('Files', {'fields': ('resume',)}),
+        ('Resume', {'fields': ('resume', 'resume_url')}),
     )
 
 
@@ -35,7 +36,8 @@ class ProjectAdmin(admin.ModelAdmin):
     list_editable = ('featured', 'order')
     list_filter = ('featured',)
     fieldsets = (
-        ('Project Info', {'fields': ('title', 'description', 'image')}),
+        ('Project Info', {'fields': ('title', 'description')}),
+        ('Image', {'fields': ('image', 'image_url'), 'description': 'Either upload an image OR paste a direct image URL. URL is recommended.'}),
         ('Tech & Links', {'fields': ('tech_stack', 'github_url', 'live_url')}),
         ('Display', {'fields': ('featured', 'order')}),
     )
